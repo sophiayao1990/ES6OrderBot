@@ -20,9 +20,11 @@ app.post("/sms", (req, res) =>{
     }
     let sMessage = req.body.Body|| req.body.body;
     let aReply = oOrders[sFrom].handleInput(sMessage);
+
     if(oOrders[sFrom].isDone()){
         delete oOrders[sFrom];
     }
+
     res.setHeader('content-type', 'text/xml');
     let sResponse = "<Response>";
     for(let n = 0; n < aReply.length; n++){

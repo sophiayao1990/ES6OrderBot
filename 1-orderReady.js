@@ -12,7 +12,7 @@ app.post("/sms", (req, res) =>{
     let sMessage = req.body.Body|| req.body.body;
     let d = new Date(); 
     d.setMinutes(d.getMinutes() + 20);
-    let aReply = [`Thank you for your order ${sFrom}`, `Please pick it up at ${d.toTimeString()}`];
+    let aReply = [`Thank you for your order: ${sMessage}, and your order number is ${sFrom}`, `Please pick it up at ${d.toTimeString()}`];
     res.setHeader('content-type', 'text/xml');
     let sResponse = "<Response>";
     for(let n = 0; n < aReply.length; n++){
